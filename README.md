@@ -1,3 +1,3 @@
 # fizzbuzz
 
-Course work. Not for human consumption.
+Course work. Educational. Please ignore.
