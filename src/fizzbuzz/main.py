@@ -6,7 +6,7 @@ def main():
                                      prog='fizzbuzz',
                                      epilog="""
                                      Algorithms: 
-                                     basic, oneliner, recursive, functional, itertools
+                                     basic, oneliner, recursive, functional, itertools, lambda
                                      """)
     
     parser.add_argument('algorithm', type=str, nargs='?', 
@@ -25,6 +25,8 @@ def main():
             print(fizz_functional(15))
         elif args.algorithm == 'itertools':
             print(fizz_itertools(15))
+        elif args.algorithm == 'lambda':
+            print(fizz_lambda(15))
         else:
             parser.print_usage()
     else:
@@ -69,6 +71,9 @@ def fizz_itertools(n):
     buzzes = its.cycle([""] * 4 + ["Buzz"])
     fizzes_buzzes = (fizz + buzz for fizz, buzz in zip(fizzes, buzzes))
     return [word or i for i, word in zip(its.count(1), fizzes_buzzes)][:n]
+
+def fizz_lambda(n):
+    return list(map(lambda i: 'Fizz'*(not i%3) + 'Buzz'*(not i%5) or i, range(1, n+1))) 
 
 
 if __name__ == "__main__":
