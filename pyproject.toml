@@ -19,3 +19,5 @@ classifiers = [
 
 [project.entry-points.console_scripts]
 fizz1 = "fizz1.main:main"
+fizz_oneliner = "fizz_oneliner.main:main"
+
