@@ -1,10 +1,14 @@
 import argparse
 
 def main():
-    parser = argparse.ArgumentParser(description = 'Prints the FizzBuzz sequence.',
-                                     prog = 'fizzbuzz')
+    parser = argparse.ArgumentParser(description='Prints the FizzBuzz sequence.',
+                                     prog='fizzbuzz',
+                                     epilog="""
+                                     Algorithms: 
+                                     basic, oneliner, recursive
+                                     """)
     
-    parser.add_argument('algorithm', type=str, nargs='?', default='basic', 
+    parser.add_argument('algorithm', type=str, nargs='?', 
                         help='the fizzbuzz algorithm to use')
 
     args = parser.parse_args()
