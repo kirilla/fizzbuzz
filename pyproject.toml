@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fizzbuzz"
+version = "0.0.1"
+description = ""
+authors = [
+	{ name = "Jonas Sundstrom", email = "jonas@kirilla.se" }
+]
+license = { file = "LICENSE" }
+dependencies = [
+	"argparse"
+] 
+classifiers = [
+	# classifiers?
+]
+
+[project.entry-points.console_scripts]
+fizz1 = "fizz1.main:main"
