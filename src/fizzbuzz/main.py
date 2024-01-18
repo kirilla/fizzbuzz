@@ -1,11 +1,12 @@
 import argparse
+import itertools as its
 
 def main():
     parser = argparse.ArgumentParser(description='Prints the FizzBuzz sequence.',
                                      prog='fizzbuzz',
                                      epilog="""
                                      Algorithms: 
-                                     basic, oneliner, recursive, functional
+                                     basic, oneliner, recursive, functional, itertools
                                      """)
     
     parser.add_argument('algorithm', type=str, nargs='?', 
@@ -22,6 +23,8 @@ def main():
             print(fizz_recursive_descending(15))
         elif args.algorithm == 'functional':
             print(fizz_functional(15))
+        elif args.algorithm == 'itertools':
+            print(fizz_itertools(15))
         else:
             parser.print_usage()
     else:
@@ -60,6 +63,12 @@ def fizz_functional(n):
     return [
             "Fizz" * (i % 3 == 0) + "Buzz" * (i % 5 == 0) or i for i in range(1, n+1)
             ]
+
+def fizz_itertools(n):
+    fizzes = its.cycle([""] * 2 + ["Fizz"])
+    buzzes = its.cycle([""] * 4 + ["Buzz"])
+    fizzes_buzzes = (fizz + buzz for fizz, buzz in zip(fizzes, buzzes))
+    return [word or i for i, word in zip(its.count(1), fizzes_buzzes)][:n]
 
 
 if __name__ == "__main__":
