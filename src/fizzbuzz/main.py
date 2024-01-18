@@ -5,7 +5,7 @@ def main():
                                      prog='fizzbuzz',
                                      epilog="""
                                      Algorithms: 
-                                     basic, oneliner, recursive
+                                     basic, oneliner, recursive, functional
                                      """)
     
     parser.add_argument('algorithm', type=str, nargs='?', 
@@ -20,6 +20,8 @@ def main():
             fizz_oneliner()
         elif args.algorithm == 'recursive':
             print(fizz_recursive_descending(15))
+        elif args.algorithm == 'functional':
+            print(fizz_functional(15))
         else:
             parser.print_usage()
     else:
@@ -53,6 +55,11 @@ def fizz_recursive_descending(n):
         result = n
 
     return fizz_recursive_descending(n - 1) + [result]
+
+def fizz_functional(n):
+    return [
+            "Fizz" * (i % 3 == 0) + "Buzz" * (i % 5 == 0) or i for i in range(1, n+1)
+            ]
 
 
 if __name__ == "__main__":
