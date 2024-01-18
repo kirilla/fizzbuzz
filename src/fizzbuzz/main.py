@@ -38,17 +38,17 @@ def fizz_oneliner():
 def fizz_recursive_descending(n):
     if n == 0:
         return []
-    else:
-        if n % 3 == 0 and n % 5 == 0:
-            result = "FizzBuzz"
-        elif n % 3 == 0:
-            result = "Fizz"
-        elif n % 5 == 0:
-            result = "Buzz"
-        else:
-            result = n
 
-        return fizz_recursive_descending(n - 1) + [result]
+    if n % 3 == 0 and n % 5 == 0:
+        result = "FizzBuzz"
+    elif n % 3 == 0:
+        result = "Fizz"
+    elif n % 5 == 0:
+        result = "Buzz"
+    else:
+        result = n
+
+    return fizz_recursive_descending(n - 1) + [result]
 
 
 if __name__ == "__main__":
