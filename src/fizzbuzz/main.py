@@ -24,7 +24,7 @@ def main():
         elif args.algorithm == 'functional':
             print(fizz_functional(15))
         elif args.algorithm == 'itertools':
-            print(fizz_itertools(15))
+            fizz_itertools(15)
         elif args.algorithm == 'lambda':
             print(fizz_lambda(15))
         else:
@@ -70,7 +70,10 @@ def fizz_itertools(n):
     fizzes = its.cycle([""] * 2 + ["Fizz"])
     buzzes = its.cycle([""] * 4 + ["Buzz"])
     fizzes_buzzes = (fizz + buzz for fizz, buzz in zip(fizzes, buzzes))
-    return [word or i for i, word in zip(its.count(1), fizzes_buzzes)][:n]
+    result = (word or i for word, i in zip(fizzes_buzzes, its.count(1)))
+    for i in its.islice(result, n):
+        print(i)
+
 
 def fizz_lambda(n):
     return list(map(lambda i: 'Fizz'*(not i%3) + 'Buzz'*(not i%5) or i, range(1, n+1))) 
